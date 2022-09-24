@@ -12,7 +12,7 @@ jobs:
       - name: Define NodeJS Version
         uses: actions/setup-node@v1
         with:
-          node-version: "12.x"
+          node-version: "18.x"
       # Install project dependencies
       - run: npm ci
       # Check code formatting based on script defined - Prettier

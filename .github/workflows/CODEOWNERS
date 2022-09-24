@@ -1,1 +1,4 @@
 * @EOyebamiji
+*.js @EOyebamiji
+*.yml @EOyebamiji
+*yaml @EOyebamiji

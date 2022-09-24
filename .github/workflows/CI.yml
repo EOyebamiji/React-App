@@ -16,7 +16,7 @@ jobs:
       # Install project dependencies
       - run: npm ci
       # Check code formatting based on script defined - Prettier
-      - run: npm format:check
+      - run: npm run format:check
       # Run Automated tests
       - run: npm test -- --coverage
       # Define enviromental variable to avoid interactive terminal

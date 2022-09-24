@@ -20,7 +20,7 @@ jobs:
       - run: npm rum format
       # Run Automated tests
       - run: npm test -- --coverage
-      # Define enviromental variable to avoid interactive terminal
+        # Define enviromental variable to avoid interactive terminal
         env:
           CI: true
       # Upload generated code coverage as an Artifact

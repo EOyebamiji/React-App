@@ -27,7 +27,7 @@ jobs:
           CI: true
       # Upload generated code coverage as an Artifact
 
-    # Workflow to trigger when there is a push to the develop repo
+      # Workflow to trigger when there is a push to the develop repo
       - name: Build project
         if: github.event_name == 'push'
         run: |

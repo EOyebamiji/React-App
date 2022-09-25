@@ -30,8 +30,9 @@ jobs:
     # Workflow to trigger when there is a push to the develop repo
       - name: Build project
         if: github.event_name == 'push'
-        run: npm run Build
-        run: npm install -g surge
+        run: |
+          npm run build
+          npm install --global surge
 
       - name: Deploy to Staging
         if: github.event_name == 'push'

@@ -31,7 +31,7 @@ jobs:
       - name: Build project
         if: github.event_name == 'push'
       - run: npm run Build
-      - run: npm Install -g surge
+      - run: npm install -g surge
 
       - name: Deploy to Staging
         if: github.event_name == 'push'

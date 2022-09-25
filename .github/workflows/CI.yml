@@ -3,6 +3,8 @@ name: Continous Integration
 on:
   pull_request:
     branches: [develop]
+  push:
+    branches: [develop]
 
 jobs:
   build:
@@ -24,3 +26,16 @@ jobs:
         env:
           CI: true
       # Upload generated code coverage as an Artifact
+
+    # Workflow to trigger when there is a push to the develop repo
+      - name: Build project
+        if: github.event_name == 'push'
+      - run: npm run Build
+      - run: npm Install -g surge
+
+      - name: Deploy to Staging
+        if: github.event_name == 'push'
+      - run: npm surge --project ./build --domain http://honorable-bait.surge.sh/
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}

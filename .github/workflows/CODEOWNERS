@@ -1,4 +1,5 @@
 * @EOyebamiji, @EOyebamiji1
 *.js @EOyebamiji, @EOyebamiji1
-*.yml @EOyebamiji, @EOyebamiji1
-*.yaml @EOyebamiji, @EOyebamiji1
+*.yml @EOyebamiji1
+*.yaml @EOyebamiji
+/public/ @EOyebamiji1

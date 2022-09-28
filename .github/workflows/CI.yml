@@ -11,6 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3.0.2
+      # Caching Node Modules from the project
+      - name: Cache Node Modules
+        uses: actions/cache@3.0.8
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-NodeCache_Key-${{ hashFiles('**/package-lock.json') }}
+          restore-key: |
+            ${{ runner.os }}-NodeCache_Key-
+
       - name: Define NodeJS Version
         uses: actions/setup-node@v3.5.0
         with:

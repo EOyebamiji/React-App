@@ -49,6 +49,7 @@ jobs:
           npm install -g surge
       # Upload generated code coverage as an Artifact
       - name: Upload Build Folder
+        if: github.event_name == 'push'
         uses: actions/upload-artifact@v3.1.0
         with:
           name: build

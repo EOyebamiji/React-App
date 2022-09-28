@@ -17,7 +17,7 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-NodeCache_Key-${{ hashFiles('**/package-lock.json') }}
-          restore-key: |
+          restore-keys: |
             ${{ runner.os }}-NodeCache_Key-
 
       - name: Define NodeJS Version

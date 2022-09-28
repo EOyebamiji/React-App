@@ -77,6 +77,6 @@ jobs:
       #Wrokflow to upload coverage reports into Codecov
       - name: Upload Coverage Reports
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: npx Codecov
+        run: npx codecov
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

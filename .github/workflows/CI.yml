@@ -2,9 +2,9 @@ name: Continous Integration
 
 on:
   pull_request:
-    branches: [develop]
+    branches: [develop, master]
   push:
-    branches: [develop]
+    branches: [develop, master]
 
 jobs:
   build:
@@ -54,6 +54,12 @@ jobs:
         with:
           name: build
           path: build
+      # Release using semantic release and coventional commits
+      - name: Create Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       #Worlflow to deploy to staging env
       - name: Deploy to Staging

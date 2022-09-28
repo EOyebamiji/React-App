@@ -69,8 +69,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
         run: surge --project ./build --domain http://honorable-bait.surge.sh/
 
-    #Workflow to deploy to production
+      #Workflow to deploy to production
       - name: Deploy to Production
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         run: surge --project ./build --domain https://smooth-boy.surge.sh/
-

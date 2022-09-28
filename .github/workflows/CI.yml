@@ -54,7 +54,7 @@ jobs:
           name: build
           path: build
 
-    #Worlflwo to deploy to staging env
+      #Worlflow to deploy to staging env
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: surge --project ./build --domain http://honorable-bait.surge.sh/

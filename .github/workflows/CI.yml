@@ -1,0 +1,70 @@
+name: Continous Integration
+
+on:
+  pull_request:
+    branches: [develop, master]
+  push:
+    branches: [develop, master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3.0.2
+      # Caching Node Modules from the project
+      - name: Cache Node Modules
+        uses: actions/cache@v3.0.8
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-NodeCache_Key-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-NodeCache_Key-
+
+      - name: Define NodeJS Version
+        uses: actions/setup-node@v3.5.0
+        with:
+          node-version: "18.x"
+      # Install project dependencies
+      - run: npm ci
+      # Check code formatting based on script defined - Prettier
+      - run: npm run format:check
+      - run: npm rum format
+      # Run Automated tests
+      - run: npm test -- --coverage
+        # Define enviromental variable to avoid interactive terminal
+        env:
+          CI: true
+      # Upload generated code coverage as an Artifact
+      - name: Upload Generated Test Code coverage as an Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: Code-Coverage
+          path: coverage
+
+      # Workflow to trigger when there is a push to the develop repo
+      - name: Build project
+        if: github.event_name == 'push'
+        run: |
+          npm run build
+          npm install -g surge
+      # Upload generated code coverage as an Artifact
+      - name: Upload Build Folder
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: build
+          path: build
+      # Release using semantic release and coventional commits
+      - name: Create Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      #Worlflow to deploy to staging env
+      - name: Deploy to Staging
+        if: github.event_name == 'push'
+        run: surge --project ./build --domain http://honorable-bait.surge.sh/
+        env:
+          SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}

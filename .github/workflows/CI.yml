@@ -36,7 +36,7 @@ jobs:
 
       - name: Deploy to Staging
         if: github.event_name == 'push'
-        run: npm surge --project ./build --domain http://honorable-bait.surge.sh/
+        run: surge --project ./build --domain http://honorable-bait.surge.sh/
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}

@@ -3,7 +3,7 @@ name: Notify on release
 on:
   release:
     types:
-      - [published]
+      - "published"
 
 jobs:
   Slack-Message:
@@ -12,4 +12,4 @@ jobs:
       - name: Send Slack Message
         run: |
           curl -X POST -H 'Content-type: application/json' --data '{"text": "Hello Team, New Release ${{ github.event.release.tag_name }} is out,
-          < ${{ github.event.release.html_url }} | check it out now.>"
+          < ${{ github.event.release.html_url }} | check it out now.>"}' ${{ secrets.SLACK_WEBHOOK }}

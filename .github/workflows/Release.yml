@@ -3,7 +3,7 @@ name: Notify on release
 on:
   release:
     types:
-      - "published"
+      - [published]
 
 jobs:
   Slack-Message:

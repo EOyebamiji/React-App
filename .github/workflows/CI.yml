@@ -83,7 +83,7 @@ jobs:
 
       #Workflow to automatically open an issue if a workflow fails
       - name: Open Issues For Failed Jobs
-        if: failure() && github_event_name == 'pull_request'
+        if: failure() && github.event_name == 'pull_request'
         run: |
           curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/issues \

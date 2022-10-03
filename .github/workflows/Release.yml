@@ -1,4 +1,4 @@
-name: Notify on release
+name: Send Notification On Every New Version Released
 
 on:
   release:

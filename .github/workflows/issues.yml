@@ -13,5 +13,3 @@ jobs:
         run: |
           curl -X POST -H 'Content-type: application/json' 
           --data '{"text": "Hello Team, We have an issues < ${{ github.event.release.html_url }}|${{ github.event.issu.html_url}}|${{ github.event.issue.title }}.>"}' ${{ secrets.SLACK_WEBHOOK }}
-
-

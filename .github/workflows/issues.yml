@@ -1,0 +1,15 @@
+name: Send Notification On Every Issues Created
+
+on:
+  issues:
+    types:
+      - "opened"
+
+jobs:
+  Slack-Message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Slack Message
+        run: |
+          curl -X POST -H 'Content-type: application/json' 
+          --data '{"text": "Hello Team, We have an issues < ${{ github.event.release.html_url }}|${{ github.event.issu.html_url}}|${{ github.event.issue.title }}.>"}' ${{ secrets.SLACK_WEBHOOK }}

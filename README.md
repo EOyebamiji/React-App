@@ -116,7 +116,7 @@ For this project, we will host our application using [Surge](https://surge.sh/)
 
 ### 'Define Workflow'
 
-1. Develop Branch – Pull Request to Merge into Develop
+1. Workflow Branch – Pull Request to Merge into Develop
 
 - Install Dependencies
 - Check code formatting (Prettier)

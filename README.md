@@ -13,17 +13,17 @@ See this section about [GitHub Actions](https://docs.github.com/en/actions) and 
 This project will see us use the CI/CD process and try as much as possible to replicate a real-time scenario and best practices in this project. Here is a brief explanation of what his project entails.
 We shall create a workflow in our repository to log commits and push local code changes. We’ll have three branches (Master/Main, Develop and Workflow) that will play three different roles in achieving our CI/CD workflow. The first two branches are protected branches (Master/Main and Develop) because we do not want direct commits and push to these branches.
 The First branch, the “Workflow” branch, is where all our code changes and modifications will be done.
-The Master/Main branch: Contains deployable codes, codes in production – Anything pushed/Merged to master is ready to be deployed into production and go live.
+The Master/Main branch: Contains deployable codes, and codes in production – Anything pushed/Merged to master is ready to be deployed into production and go live.
 Develop branch: This will contain development codes, bug fixes, features and codes that are not ready for production, every code pushed/merged to this branch is deployed into staging for testing purposes, once all tests are passed, codes are then pushed/merged to Master via a Pull Request
 Workflow branch: This is our working branch where all code changes and modifications will be made.
 
 ### Scenario:
 
-Frontend Team needs to add a new feature to the Application (e.g., Add an option to toggle between Dark Mode and Light Mode) – As we know this change can break our application if not properly done. Below is a sample workflow to achieve this.
+The Frontend Team needs to add a new feature to the Application (e.g., Add an option to toggle between Dark Mode and Light Mode) – As we know this change can break our application if not properly done. Below is a sample workflow to achieve this.
 
 - Create a new Feature branch from the Master branch – Feature/” Branch Name”
 
-- When done with code and local testing, open a pull request to merge into develop
+- When done with code and local testing, open a pull request to merge into the develop
 
 - Pull request will initiate a workflow that will test the code against some test criteria set out in the workflow, if features pass and don’t break the code, it’ll be reviewed by the DevOps team handling the Develop branch and decide if it's to be merged or not. If the pull request is approved and now merged into the Develop branch, the merge request will trigger another job from our workflow to test for new dependencies and then deploy the new changes into staging where the new changes can be tested and reviewed again in a near-live environment.
 
@@ -35,7 +35,7 @@ Frontend Team needs to add a new feature to the Application (e.g., Add an option
 
 - When a new feature is successfully deployed into production, our workflow will trigger a job that will send a notification to the DevOps team Slack group on the successful deployment of the new feature.
 
-As explained above is what this project is set to achieve.
+As explained above, this project is set to achieve.
 
 # Getting started with the Project and its dependencies
 
@@ -80,7 +80,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single-build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point, you're on your own.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc.) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point, you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However, we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
